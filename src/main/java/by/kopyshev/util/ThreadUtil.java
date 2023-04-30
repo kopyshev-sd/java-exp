@@ -2,6 +2,7 @@ package by.kopyshev.util;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
 public class ThreadUtil {
@@ -17,6 +18,14 @@ public class ThreadUtil {
     public static void safetyAwait(CountDownLatch latch) {
         try {
             latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void safetyAcquire(Semaphore semaphore) {
+        try {
+            semaphore.acquire();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
