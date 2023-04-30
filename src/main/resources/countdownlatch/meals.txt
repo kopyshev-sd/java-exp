@@ -1,0 +1,9 @@
+Potato | 200
+Beef | 400
+Pork | 600
+Carrots | 100
+Pasta | 250
+Eggs | 150
+Ice cream | 400
+Burger | 600
+Groceries | 180
