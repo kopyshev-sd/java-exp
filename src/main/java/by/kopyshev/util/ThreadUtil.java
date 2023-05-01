@@ -1,5 +1,6 @@
 package by.kopyshev.util;
 
+import java.time.temporal.ChronoUnit;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Semaphore;
@@ -8,12 +9,17 @@ import java.util.concurrent.TimeUnit;
 public class ThreadUtil {
 
     public static void sleep(long millis) {
+        sleep(millis, 0);
+    }
+
+    public static void sleep(long millis, int nanos) {
         try {
-            Thread.sleep(millis);
+            Thread.sleep(millis, nanos);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
 
     public static void safetyAwait(CountDownLatch latch) {
         try {
@@ -32,8 +38,12 @@ public class ThreadUtil {
     }
 
     public static void join(Thread thread) {
+        join(thread, Long.MAX_VALUE);
+    }
+
+    public static void join(Thread thread, long millis) {
         try {
-            thread.join();
+            thread.join(millis);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
